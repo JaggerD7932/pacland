@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Pacman Fullscreen</title>
+    <style type="text/css">
+        * {
+            /*Centers all divs by default*/
+            margin: auto;
+            text-align: center;
+        }
+
+        div {
+            /*sets the size of the div*/
+            width: 2000px;
+            height: 1000px;
+            
+            /*sets up positioning for the other divs*/
+            display: inline-block;
+            position: relative;
+        }
+
+        #txt {
+            width: 300px;
+            height: 100px;
+            position: absolute;
+            font-size: 100px;
+            z-index: 1; /*moves the text above the background*/
+            
+            /*quick-fix centering the text for our computers*/
+            left: 850px;
+            top: 340px;
+            color: white;
+            margin: 0 auto; /*also helps center text*/
+            text-shadow: 5px 5px grey;
+        }
+
+        #txt:hover {
+            transform: scaleY(1.5);
+        }
+
+        #pacman {
+            animation: eat 0.75s ease-in-out 0s infinite normal;
+            position: absolute;
+            z-index: 1; /*moves pacman above the background*/
+            left: 50px;
+            top: 45px;
+        }
+
+        @keyframes eat {
+            0% {
+                width: 0px;
+                height: 0px;
+                border-right: 60px solid transparent;
+                border-top: 60px solid yellow;
+                border-left: 60px solid yellow;
+                border-bottom: 60px solid yellow;
+                border-top-left-radius: 60px;
+                border-top-right-radius: 60px;
+                border-bottom-left-radius: 60px;
+                border-bottom-right-radius: 60px;
+            }
+
+            /*The mid-way point of the eating animation*/
+            50% {
+                width: 0px;
+                height: 0px;
+                border-right: 60px solid transparent;
+                border-top: 60px solid yellow;
+                border-left: 60px solid yellow;
+                border-bottom: 60px solid yellow;
+                border-top-left-radius: 70px; /*closes pacman's upper jaw*/
+                border-top-right-radius: 60px;
+                border-bottom-left-radius: 60px;
+                border-bottom-right-radius: 70px; /*closes pacman's lower jaw*/
+            }
+
+            100% {
+                width: 0px;
+                height: 0px;
+                border-right: 60px solid transparent;
+                border-top: 60px solid yellow;
+                border-left: 60px solid yellow;
+                border-bottom: 60px solid yellow;
+                border-top-left-radius: 60px;
+                border-top-right-radius: 60px;
+                border-bottom-left-radius: 60px;
+                border-bottom-right-radius: 60px;
+            }
+        }
+
+        #bg1 {
+            background-image: url(PacmanLevel-1.png);
+            background-position: left top; /*sets the background to start from the top left corner*/
+            background-repeat: no-repeat;
+            background-size: 2000px;
+            position: relative;
+            transition: background-image 1s;
+        }
+
+        #bg1:hover {
+            background-image: linear-gradient(blue, white);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="pacman"></div>
+    <div id="bg1"></div>
+    <div id="txt">Pacman</div>
+</body>
+
+</html>
